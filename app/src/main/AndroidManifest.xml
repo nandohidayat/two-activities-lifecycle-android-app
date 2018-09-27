@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nandohidayat.app.twoactivities">
+    package="com.nandohidayat.app.twoactivitieslifecycle">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.nandohidayat.app.twoactivitieslifecycle.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name="com.nandohidayat.app.twoactivitieslifecycle.SecondActivity"
             android:label="@string/activity2_name"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.nandohidayat.app.twoactivitieslifecycle.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.nandohidayat.app.twoactivitieslifecycle.MainActivity" />
         </activity>
     </application>
 
