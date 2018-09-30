@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         mReplyTextView = (TextView) findViewById(R.id.text_message_reply);
         Log.d(LOG_TAG, "-------");
         Log.d(LOG_TAG, "onCreate");
+        if(savedInstanceState != null) {
+            boolean inVisible = savedInstanceState.getBoolean("reply_visible");
+            if(inVisible) {
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(savedInstanceState.getString("reply_text"));
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void launchSecondActivity(View view) {
@@ -32,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         String message = mMessageEditText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivityForResult(intent, TEXT_REQUEST);
-        mMessageEditText.setText("");
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -81,5 +88,14 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         Log.d(LOG_TAG, "onDestroy");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(mReplyHeadTextView.getVisibility() == View.VISIBLE) {
+            outState.putBoolean("reply_visible", true);
+            outState.putString("reply_visible", mReplyTextView.getText().toString());
+        }
     }
 }
